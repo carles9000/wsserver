@@ -1,8 +1,9 @@
 MIT License
 
 (c) FiveTech Software SL, 2020
-Developed by Antonio Linares alinares@fivetechsoft.com
+Developed 2023 by Antonio Linares alinares@fivetechsoft.com
 function NetworkULL2Bin( n ) and support for Mask() with lengths over 126 chars developed by Andreu Botella
+Developed 2024 by Carles Aubia carles9000@gmail.com. Adapted to SSL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

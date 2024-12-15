@@ -3,7 +3,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Harbour websocket server</title>			
+		<title>Harbour websocket SSL server</title>			
    </head>
    
    <style>
@@ -73,23 +73,24 @@
    
    <body>
 		<div class="myhead">
-			<span>Harbour websocket server - client demo</span>			
+			<span>Harbour websocket SSL server - client demo</span>			
 			<hr>
 		</div>
 		
 		<div id="content">
 			<a href='https://harbour.github.io'>
-			   <img id="harbour" title='The Harbour project' src="https://github.com/FiveTechSoft/screenshots/blob/master/harbour.png?raw=true"></a><br>
+			   <img id="harbour" title='The Harbour project' src="resources/harbour.png"></a><br>
 			<input type="text" id="msg"><br>
-			<button class="btn" onclick="Send( document.getElementById( 'msg' ).value )">Send</button>
-			<button class="btn" onclick="SendFile()">Send file</button>
+			<button class="btn" onclick="Send( document.getElementById( 'msg' ).value )">Send</button>			
 			<button class="btn" id='onoff' onclick='OnOff()'>Disconnect</button>
 			<button class="btn" onclick="Clear()">Clear</button>
-			<br><a style='font-size:20' href="https://fivetechsoft.github.io/mod_harbour/">modharbour.org</a>
+			<button class="btn" onclick="Send( 'info' )">Info SSL</button>
+			
 			<br><br><textarea id="output" rows="20" cols="140"></textarea>
 		</div>
 		
-      <script>
+      <script> 
+	  
 		 var socket;
 		 
 		 Connect();
@@ -109,48 +110,45 @@
 		 }
 
 		 function Connect() {
-			socket = new WebSocket( "ws://localhost:9000" );
+		 
+			// 	Exemple with SSL 
+				socket = new WebSocket( "wss://localhost" );
+			//	Example without SSL
+			//	socket = new WebSocket( "ws://localhost:9000" );
 
 			socket.onopen = function( e ) {
+				
 				document.getElementById( 'output' ).innerHTML = "Connection established\n";
 				socket.send( "Harbour websocket server" );
+				
 				document.getElementById( 'onoff' ).innerHTML = 'Disconnect';
+				
 			};
 
-			socket.onmessage = function( event ) {
+			socket.onmessage = function( event ) {						
 				document.getElementById( 'output' ).innerHTML += event.data + '\n';
 			};
 
 			socket.onclose = function( event ) {
+				
 				document.getElementById( 'output' ).innerHTML += event.code + '\n';
 				document.getElementById( 'output' ).innerHTML += event.reason + '\n';
 				document.getElementById( 'output' ).innerHTML += ( event.wasClean ? "": "not " ) + 
 				                                                   "clean exit" + '\n';
 				socket = null;
 				document.getElementById( 'onoff' ).innerHTML = 'Connect';
+				
 			};
 
 			socket.onerror = function(error) {
+			
 				alert( 'Please run wsserver.exe first on your computer' ); // `[error] ${error.message}`);
+				socket = null;
+				
 				document.getElementById( 'msg' ).innerHTML = 'Disconnect';
 			};			
 		 }
-
-		 function SendFile() { 
-			var filePicker = document.createElement( "input" );
-			filePicker.type   = "file";
-        	filePicker.accept = ".*";
-        	filePicker.style.visibility = "hidden";
-        	filePicker.onchange = function( evt ) { 
-           		var reader = new FileReader();
-           		var file   = evt.target.files[ 0 ];
-           		reader.readAsDataURL( file ); 
-           		reader.onload = function( e ) {
-					Send( e.target.result );   
-	           }
-         	};
-        	filePicker.click(); 
-		} 
+		
 		  
 		function Clear() {
 			document.getElementById( 'msg' ).value = '';

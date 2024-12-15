@@ -1,0 +1,12 @@
+-n
+-w1
+-es2
+-inc
+-head=full
+-mt
+-owsserver
+-workdir=.hbmk/win/${hb_compiler}/
+
+-DNO_SSL
+
+src\wsserver.prg
