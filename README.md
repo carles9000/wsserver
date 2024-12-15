@@ -2,7 +2,7 @@
 
 This version is a fork of the websockets prototype from https://github.com/FiveTechSoft/wsserver adapted for use with SSL
 
-Basically this server allows you to communicate between a web browser and a Harbour app (no matter where it is!), using websockets and certificates to be able to run it under SSL.
+Basically this server allows you to communicate between a web browser and a Harbour app (no matter where it is!), using websockets and certificates to be able to run it under SSL. This example is the basis for starting to design systems based on SSL.
 
 In this version the websocket server implements an echo service, just to check that it properly works. It sends you back whatever you may send to it.
 You can easily change its source code to implement any other conversation you may have in mind. 
