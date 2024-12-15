@@ -7,7 +7,7 @@ Basically this server allows you to communicate between a web browser and a Harb
 In this version the websocket server implements an echo service, just to check that it properly works. It sends you back whatever you may send to it.
 You can easily change its source code to implement any other conversation you may have in mind. 
 
-##How to test it:
+## How to test it:
 
 SSL VERSION
 - Compile with go64_ssl.bat
@@ -17,13 +17,13 @@ NO SSL VERSION
 - Compile with go64.bat
 - Use port 9000 in client.html example
 
-##Example
+## Example
 
 Run wsserver.exe. It will display all messages that come in. Press esc at any time to end the session.
 Drag the client.html example to the browser. Anything you send to the server from the web page will come back to you (it's a kind of karma reminder :-)
 Type exit to tell the server to end your session.
 
-##Note
+## Note
 
 It is very important to have a certificate in order to run the SSL example correctly, otherwise it will not work correctly.
 You will have to install the certificates in the /cert folder
@@ -32,6 +32,6 @@ You will have to install the certificates in the /cert folder
 
 Enjoy it!
 
-[![](https://raw.githubusercontent.com/carles9000/carles9000.github.io/main/resources/gif/ws_iot.gif)]
+[![](https://github.com/carles9000/wsserver/blob/master/resources/wsserver.gif)](https://github.com/carles9000/wsserver)
 
-[![](https://github.com/FiveTechSoft/screenshots/blob/master/harbour_letters.jpg?raw=true)](https://harbour.github.io "The Harbour Project")
+<h3><a href="https://harbour.github.io">Harbour Project</a></h3>
